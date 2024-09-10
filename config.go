@@ -106,7 +106,7 @@ func loadConfig() *Config {
 	config.BackupID = *backupIDFlag
 	config.BackupSourceDir = *backupSourceDirFlag
 	config.PxarOut = *pxarOutFlag
-	onfig.archiveName = *archiveNameFlag
+	config.archiveName = *archiveNameFlag
 
 	initSmtpConfigIfNeeded := func() {
 		if config.SMTP == nil {
