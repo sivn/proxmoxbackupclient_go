@@ -141,8 +141,8 @@ func backup(client *PBSClient, newchunk, reusechunk *atomic.Uint64, pxarOut stri
 	client.Connect(false)
 
 	archive := &PXARArchive{}
-	if archiveNameFlag != "" {
-		archive.archivename = *archiveName + ".pxar.didx"
+	if archiveName != "" {
+		archive.archivename = archiveName + ".pxar.didx"
 	} else {
 		archive.archivename = "backup.pxar.didx"
 	}
