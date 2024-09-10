@@ -43,7 +43,8 @@ proxmoxbackupgo.exe
         Backup ID (optional - if not specified, the hostname is used as the default for host-type backups)
   -pxarout string
         Output PXAR archive for debug purposes (optional)
-
+  -archivename string
+        Name for archive file, defaults to backup (optional)
 
 ```
 

@@ -31,6 +31,7 @@ type Config struct {
 	BackupID        string      `json:"backup-id"`
 	BackupSourceDir string      `json:"backupdir"`
 	PxarOut         string      `json:"pxarout"`
+	ArchiveName     string      `json:"archivename"`
 	SMTP            *SMTPConfig `json:"smtp"`
 }
 
@@ -65,6 +66,7 @@ func loadConfig() *Config {
 	backupIDFlag := flag.String("backup-id", "", "Backup ID (optional - if not specified, the hostname is used as the default)")
 	backupSourceDirFlag := flag.String("backupdir", "", "Backup source directory, must not be symlink")
 	pxarOutFlag := flag.String("pxarout", "", "Output PXAR archive for debug purposes (optional)")
+	archiveNameFlag := flag.String("archivename", "", "Archive name (optional)")
 
 	mailHostFlag := flag.String("mail-host", "", "mail notification system: mail server host(optional)")
 	mailPortFlag := flag.String("mail-port", "", "mail notification system: mail server port(optional)")
@@ -104,6 +106,7 @@ func loadConfig() *Config {
 	config.BackupID = *backupIDFlag
 	config.BackupSourceDir = *backupSourceDirFlag
 	config.PxarOut = *pxarOutFlag
+	onfig.archiveName = *archiveNameFlag
 
 	initSmtpConfigIfNeeded := func() {
 		if config.SMTP == nil {
