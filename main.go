@@ -129,7 +129,7 @@ func main() {
 
 }
 
-func backup(client *PBSClient, newchunk, reusechunk *atomic.Uint64, pxarOut string, backupdir string, archiveName string) error {
+func backup(client *PBSClient, newchunk, reusechunk *atomic.Uint64, pxarOut string, backupdir string, ArchiveName string) error {
 	knownChunks := hashmap.New[string, bool]()
 
 	fmt.Printf("Starting backup of %s\n", backupdir)
@@ -141,12 +141,11 @@ func backup(client *PBSClient, newchunk, reusechunk *atomic.Uint64, pxarOut stri
 	client.Connect(false)
 
 	archive := &PXARArchive{}
-	if archiveName != "" {
-		archive.archivename = archiveName + ".pxar.didx"
+	if ArchiveName != "" {
+		archive.archivename = ArchiveName + ".pxar.didx"
 	} else {
 		archive.archivename = "backup.pxar.didx"
 	}
-
 
 	previousDidx, err := client.DownloadPreviousToBytes(archive.archivename)
 	if err != nil {
